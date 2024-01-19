@@ -9,8 +9,6 @@ const config: WebpackConfiguration = {
 	devtool: false,
 	mode: "production",
 
-	target: "node",
-
 	cache: {
 		type: 'filesystem',
 		allowCollectingMemory: true,

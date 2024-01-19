@@ -8,6 +8,8 @@ import WebpackBar from "webpackbar";
 const config: WebpackConfiguration = {
 	extends: path.resolve(__dirname, "webpack.common.config.ts"),
 
+	target: "node",
+
 	entry: {
 		server: {
 			import: "./server/index.tsx",

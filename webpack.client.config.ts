@@ -9,6 +9,8 @@ import WebpackBar from "webpackbar";
 const config: WebpackConfiguration = {
 	extends: path.resolve(__dirname, "webpack.common.config.ts"),
 
+	target: ["web", "es6"],
+
 	entry: {
 		vendor: ["react", "react-dom", "react-router-dom"],
 
