@@ -2,18 +2,12 @@ import path from "node:path";
 
 import type {Configuration as WebpackConfiguration} from "webpack";
 
-import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import WebpackBar from "webpackbar";
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import TerserPlugin from "terser-webpack-plugin";
 
 const config: WebpackConfiguration = {
-	devtool: false,
-	mode: "production",
-
-	target: "node",
+	extends: path.resolve(__dirname, "webpack.common.config.ts"),
 
 	entry: {
 		vendor: ["react", "react-dom", "react-router-dom"],
@@ -24,54 +18,11 @@ const config: WebpackConfiguration = {
 		}
 	},
 
-	cache: {
-		type: 'filesystem',
-		allowCollectingMemory: true,
-	},
-
 	output: {
 		filename: "[name].[contenthash].js",
 		path: path.resolve(__dirname, "dist", "client"),
 		assetModuleFilename: "[name][ext]",
 		clean: true,
-	},
-
-	module: {
-		rules: [
-			{
-				test: /\.ts(x|)$/,
-				exclude: /node_modules/,
-				loader: "ts-loader",
-				options: {
-					transpileOnly: true,
-				}
-			},
-
-			{
-				test: /\.css$/i,
-				exclude: /node_modules/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					"css-loader"
-				]
-			},
-		]
-	},
-
-	optimization: {
-		minimize: true,
-		minimizer: [
-			new TerserPlugin(),
-			new CssMinimizerPlugin()
-		],
-	},
-
-	resolve: {
-		extensions: [".tsx", ".ts", ".jsx", ".js"],
-
-		plugins: [
-			new TsconfigPathsPlugin(),
-		]
 	},
 
 	plugins: [
