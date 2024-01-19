@@ -73,4 +73,4 @@ const config: WebpackConfiguration = {
    devServer,
 };
 
-module.exports = config;
+export default config;
