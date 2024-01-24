@@ -1,5 +1,6 @@
 import path from "node:path";
 
+import webpack from "webpack";
 import type {Configuration as WebpackConfiguration} from "webpack";
 import type {Configuration as WebpackDevServerConfiguration} from "webpack-dev-server";
 
@@ -8,14 +9,10 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import WebpackBar from "webpackbar";
 
 const devServer: WebpackDevServerConfiguration = {
-   compress: true,
-   client: {
-      progress: true,
-      overlay: true,
-   },
-   port: 4010,
-   http2: true,
-   hot: true,
+	static: "vendor",
+	historyApiFallback:true,
+	http2: true,
+	hot: true,
 };
 
 const config: WebpackConfiguration = {
@@ -26,7 +23,7 @@ const config: WebpackConfiguration = {
 
    cache: {
       type: 'filesystem',
-      allowCollectingMemory: true,
+      // allowCollectingMemory: true,
    },
 
    output: {
@@ -64,6 +61,10 @@ const config: WebpackConfiguration = {
       new HtmlWebpackPlugin({
          template: path.resolve(__dirname, "src", "index.html"),
       }),
+
+		new webpack.DllReferencePlugin({
+			manifest: require('./vendor/main-manifest.json')
+		}),
 
       new WebpackBar({
          color: "#9f9b00"

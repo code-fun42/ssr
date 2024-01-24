@@ -10,13 +10,22 @@ import {BrowserRouter} from "react-router-dom";
 // const root = document.getElementById("root");
 
 const root = createRoot(document.getElementById("root"));
-// root.render(<App/>);
 root.render(
-   <BrowserRouter>
-      <App/>
-   </BrowserRouter>,
+   <React.StrictMode>
+      <BrowserRouter>
+         <App/>
+      </BrowserRouter>
+   </React.StrictMode>,
 );
 
+// hydrateRoot(
+//    document.getElementById("root"),
+//    <div>
+//       <BrowserRouter>
+//          <App/>
+//       </BrowserRouter>
+//    </div>,
+// );
 
 // hydrate(
 //    <React.StrictMode>
