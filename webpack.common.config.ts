@@ -1,5 +1,6 @@
 import type {Configuration as WebpackConfiguration} from "webpack";
 
+import webpack from "webpack";
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
@@ -43,6 +44,12 @@ const config: WebpackConfiguration = {
 			new TsconfigPathsPlugin(),
 		]
 	},
+
+	plugins:[
+		new webpack.DllReferencePlugin({
+			manifest: require('./vendor/main-manifest.json')
+		}),
+	],
 
 	optimization: {
 		minimize: true,

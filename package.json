@@ -8,6 +8,7 @@
       "build": "npx webpack --config webpack.client.config.ts && npx webpack --config webpack.server.config.ts",
       "build:client": "npx webpack --config webpack.client.config.ts",
       "build:server": "npx webpack --config webpack.server.config.ts",
+      "build:vendor": "npx webpack --config webpack.vendor.config.ts",
       "server:dev": "npx webpack serve --config webpack.devserver.config.ts",
       "server:dist": "npx node dist/server/server.js"
    },
