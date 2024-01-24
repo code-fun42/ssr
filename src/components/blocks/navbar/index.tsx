@@ -1,7 +1,6 @@
 import "@components/blocks/navbar/index.css";
 
 import React from 'react';
-// import ReactDOM from "react-dom/client";
 import {Link} from "react-router-dom";
 
 function Navbar() {

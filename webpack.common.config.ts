@@ -31,7 +31,8 @@ const config: WebpackConfiguration = {
 				exclude: /node_modules/,
 				use: [
 					MiniCssExtractPlugin.loader,
-					"css-loader"
+					"css-loader",
+					"postcss-loader"
 				]
 			},
 		]

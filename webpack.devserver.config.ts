@@ -10,68 +10,86 @@ import WebpackBar from "webpackbar";
 
 const devServer: WebpackDevServerConfiguration = {
 	static: "vendor",
-	historyApiFallback:true,
+	historyApiFallback: true,
 	http2: true,
 	hot: true,
 };
 
 const config: WebpackConfiguration = {
-   devtool: false,
-   mode: "development",
+	devtool: false,
+	mode: "development",
 
-   entry: "./src/index.tsx",
+	entry: "./src/index.tsx",
 
-   cache: {
-      type: 'filesystem',
-      // allowCollectingMemory: true,
-   },
+	cache: {
+		type: 'filesystem',
+		// allowCollectingMemory: true,
+	},
 
-   output: {
-      filename: "[name].[contenthash].js",
-   },
+	output: {
+		filename: "[name].[contenthash].js",
+	},
 
-   module: {
-      rules: [
-         {
-            test: /\.ts(x|)$/,
-            exclude: /node_modules/,
-            loader: "ts-loader",
-            options: {
-               transpileOnly: true,
-            }
-         },
+	module: {
+		rules: [
+			{
+				test: /\.ts(x|)$/,
+				exclude: /node_modules/,
+				loader: "ts-loader",
+				options: {
+					transpileOnly: true,
+				}
+			},
 
-         {
-            test: /\.css$/i,
-            // type: "asset/resource",
-            use: ["style-loader", "css-loader"],
-         },
-      ]
-   },
+			{
+				test: /\.p?css$/i,
+				// type: "asset/resource",
+				// use: [
+				// 	{
+				// 		loader: 'style-loader',
+				// 	},
+				// 	{
+				// 		loader: 'css-loader',
+				// 		options: {
+				// 			importLoaders: 1,
+				// 		}
+				// 	},
+				// 	{
+				// 		loader: 'postcss-loader'
+				// 	}
+				// ],
+				use: [
+					"style-loader",
+					"css-loader",
+					"postcss-loader"
+				],
+			},
+		]
+	},
 
-   resolve: {
-      extensions: [".tsx", ".ts", ".jsx", ".js"],
+	resolve: {
+		extensions: [".tsx", ".ts", ".jsx", ".js"],
 
-      plugins: [
-         new TsconfigPathsPlugin(),
-      ]
-   },
+		plugins: [
+			new TsconfigPathsPlugin(),
+		]
+	},
 
-   plugins: [
-      new HtmlWebpackPlugin({
-         template: path.resolve(__dirname, "src", "index.html"),
-      }),
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, "src", "index.html"),
+		}),
 
 		new webpack.DllReferencePlugin({
 			manifest: require('./vendor/main-manifest.json')
 		}),
 
-      new WebpackBar({
-         color: "#9f9b00"
-      }),
-   ],
+		new WebpackBar({
+			color: "#9f9b00"
+		}),
+	],
 
-   devServer,
+	devServer,
 };
 
 export default config;
