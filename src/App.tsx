@@ -1,7 +1,7 @@
 import "@assets/styles/main.css";
 
 import React from 'react';
-import Navbar from "@components/navbar";
+import Navbar from "@components/blocks/navbar";
 import {Route, Routes} from "react-router-dom";
 import Home from "@pages/home";
 import About from "@pages/about";

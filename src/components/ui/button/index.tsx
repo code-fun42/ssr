@@ -1,4 +1,4 @@
-import "@components/button/index.css";
+import "@components/ui/button/index.css";
 
 import React from 'react';
 
