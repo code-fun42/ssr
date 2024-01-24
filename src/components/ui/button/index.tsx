@@ -1,6 +1,6 @@
-import "@components/ui/button/index.css";
-
 import React from 'react';
+
+import "@components/ui/button/index.css";
 
 function Button() {
    return (
