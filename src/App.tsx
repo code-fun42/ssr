@@ -8,7 +8,7 @@ import Home from "@pages/home";
 import About from "@pages/about";
 
 const Modal =
-   lazy(() =>import(/* webpackPrefetch: true */ "@components/sections/modal"));
+   lazy(() =>import("@components/sections/modal"));
 
 function App() {
    const
