@@ -46,11 +46,11 @@ const config: WebpackConfiguration = {
 		]
 	},
 
-	plugins:[
-		new webpack.DllReferencePlugin({
-			manifest: require('./vendor/main-manifest.json')
-		}),
-	],
+	// plugins:[
+	// 	new webpack.DllReferencePlugin({
+	// 		manifest: require('./vendor/main-manifest.json')
+	// 	}),
+	// ],
 
 	optimization: {
 		minimize: true,

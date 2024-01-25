@@ -8,5 +8,5 @@ indent_size = 3
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{js,ts,html,css}]
+[*.{jsx,js,tsx,ts,html,css,pcss}]
 indent_style = tab

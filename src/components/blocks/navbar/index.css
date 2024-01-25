@@ -1,0 +1,26 @@
+.navbar {
+
+    &__list {
+        display: flex;
+        list-style-type: none;
+        font-size: 20px;
+    }
+
+    &__item {
+
+        & a {
+            color: white;
+            opacity: 0.5;
+            text-decoration: none;
+            transition: opacity .3s linear;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}

@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import "@components/ui/button/index.css";
+import "@components/ui/button/style.css";
+import {ButtonProp} from "@components/ui/button/interface";
 
-function Button() {
-   return (
-      <button className="btn">Click me!</button>
+function Button(props:ButtonProp){
+   return(
+     <button className="btn">{props.text}</button>
    );
 }
 

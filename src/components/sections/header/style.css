@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 100%;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+
+    &__navbar-wrap {
+        max-width: 500px;
+    }
+
+    &__btn-wrap {
+        max-width: 100px;
+        width: 100%;
+        height: 25px;
+    }
+}
