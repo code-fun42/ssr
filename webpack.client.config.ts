@@ -9,13 +9,13 @@ import WebpackBar from "webpackbar";
 const config: WebpackConfiguration = {
    extends: path.resolve(__dirname, "webpack.common.config.ts"),
 
-   target: ["web", "es6"],
+   entry: "./src/App.tsx",
 
-   entry: {
-      client: {
-         import: "./src/client.tsx",
-      }
-   },
+   // entry: {
+   //    client: {
+   //       import: "./src/client.tsx",
+   //    }
+   // },
 
    output: {
       filename: "[name].[contenthash].js",

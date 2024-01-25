@@ -5,11 +5,9 @@ import "@components/sections/modal/style.css";
 function Modal() {
    return (
       <section className="modal">
-         {/*<div className="modal">*/}
-            <div className="modal__container">
-
-            </div>
-         {/*</div>*/}
+         <div className="modal__container">
+            123
+         </div>
       </section>
    );
 }

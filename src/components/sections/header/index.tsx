@@ -5,11 +5,9 @@ import Button from "@components/ui/button";
 
 import "@components/sections/header/style.css";
 
-function Header() {
-   function clickOpenModal(){
-      console.log('buttonClick')
-   }
+import {HeaderProp} from "@components/sections/header/interface";
 
+function Header(props:HeaderProp) {
    return (
       <header className="header">
          <div className="container">
@@ -20,7 +18,7 @@ function Header() {
                <div className="header__navbar-wrap">
                   <Navbar/>
                </div>
-               <div onClick={clickOpenModal} className="header__btn-wrap">
+               <div onClick={props.openModal} className="header__btn-wrap">
                   <Button text="Modal"/>
                </div>
             </div>

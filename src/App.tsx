@@ -1,18 +1,32 @@
 import "@assets/styles/main.css";
 
-import React from 'react';
+import React, {lazy, Suspense, useState} from 'react';
 import {Route, Routes} from "react-router-dom";
 
 import Header from "@components/sections/header";
 import Home from "@pages/home";
 import About from "@pages/about";
-import Modal from "@components/sections/modal";
+
+const Modal =
+   lazy(() =>import(/* webpackPrefetch: true */ "@components/sections/modal"));
 
 function App() {
+   const
+      [showModal, setShowModal] = useState(false);
+
+   function clickOpenModal() {
+      setShowModal(true);
+      console.log('buttonClick');
+   }
+
    return (
       <div className="app">
-         <Modal/>
-         <Header></Header>
+         {showModal &&
+             <Suspense fallback={<div>Loading...</div>}>
+                 <Modal/>
+             </Suspense>
+         }
+         <Header openModal={clickOpenModal}/>
          <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/about" element={<About/>}/>
@@ -20,5 +34,11 @@ function App() {
       </div>
    );
 }
+
+// {showModal &&
+// <Suspense fallback={<div>Loading...</div>}>
+//     <Modal/>
+// </Suspense>
+// }
 
 export default App;

@@ -23,7 +23,6 @@ const config: WebpackConfiguration = {
 
 	cache: {
 		type: 'filesystem',
-		// allowCollectingMemory: true,
 	},
 
 	output: {
@@ -43,21 +42,6 @@ const config: WebpackConfiguration = {
 
 			{
 				test: /\.p?css$/i,
-				// type: "asset/resource",
-				// use: [
-				// 	{
-				// 		loader: 'style-loader',
-				// 	},
-				// 	{
-				// 		loader: 'css-loader',
-				// 		options: {
-				// 			importLoaders: 1,
-				// 		}
-				// 	},
-				// 	{
-				// 		loader: 'postcss-loader'
-				// 	}
-				// ],
 				use: [
 					"style-loader",
 					"css-loader",
