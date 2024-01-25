@@ -7,58 +7,61 @@ import TerserPlugin from "terser-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const config: WebpackConfiguration = {
-	devtool: false,
-	mode: "production",
+   devtool: false,
+   mode: "development",
 
-	cache: {
-		type: 'filesystem',
-		allowCollectingMemory: true,
-	},
+   cache: {
+      type: 'filesystem',
+      allowCollectingMemory: true,
+   },
 
-	module: {
-		rules: [
-			{
-				test: /\.ts(x|)$/,
-				exclude: /node_modules/,
-				loader: "ts-loader",
-				options: {
-					transpileOnly: true,
-				}
-			},
+   module: {
+      rules: [
+         {
+            test: /\.ts(x|)$/,
+            exclude: /node_modules/,
+            loader: "ts-loader",
+            options: {
+               transpileOnly: true,
+            }
+         },
 
-			{
-				test: /\.css$/i,
-				exclude: /node_modules/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					"css-loader",
-					"postcss-loader"
-				]
-			},
-		]
-	},
+         {
+            test: /\.css$/i,
+            exclude: /node_modules/,
+            use: [
+               MiniCssExtractPlugin.loader,
+               "css-loader",
+               "postcss-loader"
+            ]
+         },
+      ]
+   },
 
-	resolve: {
-		extensions: [".tsx", ".ts", ".jsx", ".js"],
+   resolve: {
+      extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
 
-		plugins: [
-			new TsconfigPathsPlugin(),
-		]
-	},
+      plugins: [
+         new TsconfigPathsPlugin(),
+      ]
+   },
 
-	plugins:[
-		new webpack.DllReferencePlugin({
-			manifest: require('./vendor/main-manifest.json')
-		}),
-	],
-
-	optimization: {
-		minimize: true,
-		minimizer: [
-			new TerserPlugin(),
-			new CssMinimizerPlugin()
-		],
-	},
+   optimization: {
+      splitChunks: {
+         chunks: "all",
+         cacheGroups: {
+            react: {
+               test: /[/\\]node_modules[/\\]react/,
+               filename: 'react.[contenthash].js'
+            }
+         }
+      },
+      // minimize: true,
+      // minimizer: [
+      // new TerserPlugin(),
+      // new CssMinimizerPlugin()
+      // ],
+   },
 };
 
 export default config;
