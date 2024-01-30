@@ -5,6 +5,7 @@ import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import path from "node:path";
 
 const config: WebpackConfiguration = {
    devtool: false,
@@ -12,13 +13,12 @@ const config: WebpackConfiguration = {
 
    cache: {
       type: 'filesystem',
-      allowCollectingMemory: true,
    },
 
    module: {
       rules: [
          {
-            test: /\.ts(x|)$/,
+            test: /\.tsx?$/,
             exclude: /node_modules/,
             loader: "ts-loader",
             options: {
@@ -40,6 +40,13 @@ const config: WebpackConfiguration = {
 
    resolve: {
       extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+
+      alias: {
+         "@assets": path.resolve(__dirname, "assets"),
+         "@components": path.resolve(__dirname, "src", "components"),
+         "@pages": path.resolve(__dirname, "src", "pages"),
+         "@layouts": path.resolve(__dirname, "src", "layouts"),
+      },
 
       plugins: [
          new TsconfigPathsPlugin(),
