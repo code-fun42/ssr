@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "CommonJS",
     "target": "ESNext",
-    "sourceMap": true,
+    "moduleResolution": "NodeNext",
+    "sourceMap": false,
     "esModuleInterop": true,
     "jsx": "react",
     "paths": {
@@ -25,6 +25,10 @@
     "node_modules"
   ],
   "include": [
-    "src/**/*"
+    "webpack.client.config.ts",
+    "webpack.common.config.ts",
+    "webpack.devserver.config.ts",
+    "webpack.server.config.ts",
+    "webpack.vendor.config.ts"
   ]
 }

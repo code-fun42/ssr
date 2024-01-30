@@ -7,8 +7,7 @@ import Header from "@components/sections/header";
 import Home from "@pages/home";
 import About from "@pages/about";
 
-const Modal =
-   lazy(() =>import("@components/sections/modal"));
+const Modal = lazy(() => import("@components/sections/modal/index"));
 
 function App() {
    const
@@ -21,12 +20,13 @@ function App() {
 
    return (
       <div className="app">
-         {showModal &&
-             <Suspense fallback={<div>Loading...</div>}>
-                 <Modal/>
-             </Suspense>
-         }
+         {/*{showModal &&*/}
+         {/*    <Suspense fallback={<div>Loading...</div>}>*/}
+         {/*        <Modal/>*/}
+         {/*    </Suspense>*/}
+         {/*}*/}
          <Header openModal={clickOpenModal}/>
+         <Modal/>
          <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/about" element={<About/>}/>
